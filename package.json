@@ -1,0 +1,19 @@
+{
+  "name": "algoritmo-genetico",
+  "version": "1.0.0",
+  "description": "Algoritmo Genetico",
+  "scripts": {
+    "start": "tsc && node ./dist/start.js",
+    "nodemon": "nodemon start.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlos Maestro",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^14.11.1",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
