@@ -1,4 +1,6 @@
 import { Population } from './src/population';
+import { BinaryCodification } from './src/codification';
+import { fitness } from './src/fitness';
 
 console.log('iniciando algoritmo..');
 
@@ -19,7 +21,11 @@ const CHROM_LIM: [number, number][] = [
     [0, 9],
 ];
 
-    let population = new Population(NUM_IND, CHROM_LIM);
+let population = new Population(NUM_IND, CHROM_LIM);
 
 
-console.log(population);
+
+// console.log(population);
+let bIndividual = BinaryCodification.encode(population.individuals, CHROM_LIM.length);
+population.individuals = fitness(population.individuals);
+console.log(BinaryCodification.decode(bIndividual));
