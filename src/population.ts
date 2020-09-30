@@ -19,6 +19,7 @@ export class Population {
                 let sup = chromLimit[j][1];
                 if (!this.individuals[i]) {
                     this.individuals[i] = {
+                        id: i, 
                         chromosome: [],
                         bChromosome: '',
                         bChromosomeMap: [],

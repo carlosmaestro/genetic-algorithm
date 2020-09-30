@@ -1,6 +1,7 @@
 import { Population } from './src/population';
 import { BinaryCodification } from './src/codification';
 import { fitness } from './src/fitness';
+import { roulettePairs } from './src/roulette';
 
 console.log('iniciando algoritmo..');
 
@@ -28,4 +29,9 @@ let population = new Population(NUM_IND, CHROM_LIM);
 // console.log(population);
 let bIndividual = BinaryCodification.encode(population.individuals, CHROM_LIM.length);
 population.individuals = fitness(population.individuals);
+
 console.log(BinaryCodification.decode(bIndividual));
+
+let pairs = roulettePairs(population.individuals, 2);
+
+console.info(pairs);
