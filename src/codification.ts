@@ -10,8 +10,7 @@ export class BinaryCodification{
             individual.bChromosome = '';
             
             for (let i = 0; i < chromLength; i++) {
-                let bGene = individual.chromosome[i].toString(2);
-                bGene = defaultGene.substr(0, geneSize - bGene.length) + bGene;
+                let bGene = (defaultGene + individual.chromosome[i].toString(2)).substr(-geneSize);
                 individual.bChromosome += bGene;
             }
         }
