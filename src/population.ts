@@ -22,7 +22,6 @@ export class Population {
                         id: i, 
                         chromosome: [],
                         bChromosome: '',
-                        bChromosomeMap: [],
                         evaluation: null
                     };
                 }

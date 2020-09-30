@@ -1,32 +1,32 @@
 import { Individual } from './models/Individual';
 export class BinaryCodification{
 
-    static encode(individuals: Individual[], chromLength: number,  ): Individual[]{
-        let encodedIndividuals: string[] = [];
+    static encode(individuals: Individual[], chromLength: number, geneSize: number ): Individual[]{
+        let defaultGene = '';
+        for (let i = 0; i < geneSize; i++) {
+            defaultGene += '0';
+        }
         for (const  individual of individuals) {
             individual.bChromosome = '';
-            individual.bChromosomeMap = [];
             
             for (let i = 0; i < chromLength; i++) {
                 let bGene = individual.chromosome[i].toString(2);
+                bGene = defaultGene.substr(0, geneSize - bGene.length) + bGene;
                 individual.bChromosome += bGene;
-                individual.bChromosomeMap.push(bGene.length);
             }
         }
         return individuals;
     }
 
-    static decode(individuals:  Individual[]): Individual[]{
-
+    static decode(individuals:  Individual[], geneSize: number): Individual[]{
+        const numGene = individuals[0].chromosome.length;
         for (const individual of individuals) {
             individual.chromosome = [];
-            for (const bitMapItem of individual.bChromosomeMap) {
-                let bGene = individual.bChromosome.substr(0, bitMapItem);
+            for (let i = 0; i < numGene; i++) {
+                let bGene = individual.bChromosome.substr(i * geneSize, geneSize);
                 individual.chromosome.push(parseInt(bGene, 2))
-                individual.bChromosome = individual.bChromosome.substr(bitMapItem, individual.bChromosome.length);
             }
         }
-
         return individuals;
     }
 }
